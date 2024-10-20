@@ -49,7 +49,7 @@ A continuación se muestran algunos de los resultados obtenidos al ejecutar las 
 
 ### Resultado de la Consulta 9
 - **Profesores sin dirección o sin email**:
-  ![Resultado de la Consulta 9](resultados/resultado_query9_profesores_sin_direccion_o_sin_email.jpg)
+  ![Resultado de la Consulta 9](resultado_query9_Profesores_sin_dirección_o_sin_email.jpg)
 
 ### Resultado de la Consulta 10
 - **Profesores que no son de Santiago (ID Comuna 36)**:
@@ -57,7 +57,7 @@ A continuación se muestran algunos de los resultados obtenidos al ejecutar las 
 
 ### Resultado de la Consulta 11
 - **Alumnos sin dirección ni email**:
-  ![Resultado de la Consulta 11](resultados/resultado_query11_alumnos_sin_direccion_sin_email.jpg)
+  ![Resultado de la Consulta 11](resultado_query11_resultado_query8_alumnos_sin_email.jpg)
 
 ### Resultado de la Consulta 12
 - **Cantidad de alumnos por curso**:
@@ -72,7 +72,7 @@ A continuación se muestran algunos de los resultados obtenidos al ejecutar las 
 
 ## Enlace al Proyecto Interactivo
 
-Puedes acceder al proyecto en mi perfil de GitHub aquí: [Repositorio del Proyecto](https://github.com/tu_usuario/sql-server-gestion-colegio)
+Puedes acceder al proyecto en mi perfil de GitHub aquí: [Repositorio del Proyecto](https://github.com/Koke-Oliva/sql-server-gestion-colegio)
 
 ## Sobre el Proyecto
 
@@ -83,5 +83,5 @@ Este proyecto demuestra habilidades en:
 
 ## Contacto
 
-Si deseas más información o tienes alguna duda, no dudes en contactarme a través de [mi perfil de GitHub](https://github.com/tu_usuario).
+Si deseas más información o tienes alguna duda, no dudes en contactarme a través de [mi perfil de GitHub](https://github.com/Koke-Oliva).
 
