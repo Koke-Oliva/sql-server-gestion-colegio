@@ -49,7 +49,7 @@ A continuación se muestran algunos de los resultados obtenidos al ejecutar las 
 
 ### Resultado de la Consulta 9
 - **Profesores sin dirección o sin email**:
-  ![Resultado de la Consulta 9](resultados/resultado_query9_profesores_sin_direccion_o_sin_email.jpg)
+  ![Resultado de la Consulta 9](resultados/resultado_query9_Profesores_sin_dirección_o_sin_email.jpg)
 
 ### Resultado de la Consulta 10
 - **Profesores que no son de Santiago (ID Comuna 36)**:
