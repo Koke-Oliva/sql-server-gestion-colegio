@@ -14,10 +14,21 @@ Este proyecto fue parte del curso "Manejo de Queries para la Extracción y Anál
 3. **Población de Datos**:
    - Los datos fueron poblados usando un script proporcionado, garantizando que la base de datos estuviera completamente cargada y lista para ser consultada.
 
-4. **Consultas SQL**:
-   - Se desarrollaron varias **consultas SQL complejas** en **SQL Server** para responder preguntas específicas y realizar análisis sobre los datos. Las consultas fueron diseñadas para:
+4. **Consultas SQL Realizadas**:
+   - Se desarrollaron varias consultas SQL complejas en SQL Server para responder preguntas específicas y realizar análisis sobre los datos. Las consultas fueron diseñadas para:
      - Obtener información detallada de **estudiantes matriculados**, **asignaciones de cursos**, y **rendimiento**.
      - Realizar análisis cruzados entre las diferentes tablas del sistema.
+
+   ### Consultas Incluidas
+   - **Consultas Simples**:
+     - **Querys 1 - 6**: `SELECT *` a cada tabla para verificar si tienen datos.
+   - **Consultas Avanzadas**:
+     - **Query 7**: Seleccionar profesores cuyo nombre termine con la letra **"a"**.
+     - **Query 8**: Seleccionar **alumnos sin email** registrado.
+     - **Query 9**: Seleccionar **profesores sin dirección o sin email**.
+     - **Query 10**: Seleccionar profesores que **no sean de Santiago** (ID de Comuna 36), incluyendo los que no tienen comuna, mostrando **RUN, nombre, apellido, email y teléfono**, ordenados por nombre de manera ascendente.
+     - **Query 11**: Seleccionar el **nombre, apellido, ID de asignatura** (Alias: Asignatura), **dirección e ID de comuna** (Alias: Comuna) de los profesores.
+     - **Query 12**: Mostrar la **cantidad de alumnos por curso**, mostrando únicamente el **ID del curso** y su cantidad de alumnos.
 
 ## Archivos Incluidos
 
