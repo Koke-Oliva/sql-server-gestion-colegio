@@ -49,7 +49,7 @@ A continuación se muestran algunos de los resultados obtenidos al ejecutar las 
 
 ### Resultado de la Consulta 9
 - **Profesores sin dirección o sin email**:
-  ![Resultado de la Consulta 9](resultado_query9_Profesores_sin_dirección_o_sin_email.jpg)
+  ![Resultado de la Consulta 9](resultados/resultado_query9_profesores_sin_direccion_o_sin_email.jpg)
 
 ### Resultado de la Consulta 10
 - **Profesores que no son de Santiago (ID Comuna 36)**:
@@ -57,7 +57,7 @@ A continuación se muestran algunos de los resultados obtenidos al ejecutar las 
 
 ### Resultado de la Consulta 11
 - **Alumnos sin dirección ni email**:
-  ![Resultado de la Consulta 11](resultado_query11_resultado_query8_alumnos_sin_email.jpg)
+  ![Resultado de la Consulta 11](resultados/resultado_query11_resultado_query8_alumnos_sin_email.jpg)
 
 ### Resultado de la Consulta 12
 - **Cantidad de alumnos por curso**:
