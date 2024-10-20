@@ -35,6 +35,34 @@ Este proyecto fue parte del curso "Manejo de Queries para la Extracción y Anál
 - **Jorge Auad.sql**: Archivo que contiene todas las consultas y los scripts necesarios para la creación de la base de datos, la inserción de datos, y la ejecución de consultas solicitadas en la prueba.
 - **Pauta del Ejercicio (PDF)**: Documento con las instrucciones de la prueba que orientaron la construcción del proyecto.
 
+## Resultados
+
+A continuación se muestran algunos de los resultados obtenidos al ejecutar las consultas en SQL Server:
+
+### Resultado de la Consulta 7
+- **Profesores cuyo nombre termina con la letra "a"**:
+  ![Resultado de la Consulta 7](resultados/resultado_query7_profesores_termina_con_a.jpg)
+
+### Resultado de la Consulta 8
+- **Alumnos sin email registrado**:
+  ![Resultado de la Consulta 8](resultados/resultado_query8_alumnos_sin_email.jpg)
+
+### Resultado de la Consulta 9
+- **Profesores sin dirección o sin email**:
+  ![Resultado de la Consulta 9](resultados/resultado_query9_profesores_sin_direccion_o_sin_email.jpg)
+
+### Resultado de la Consulta 10
+- **Profesores que no son de Santiago (ID Comuna 36)**:
+  ![Resultado de la Consulta 10](resultados/resultado_query10_profesores_fuera_de_santiago.jpg)
+
+### Resultado de la Consulta 11
+- **Alumnos sin dirección ni email**:
+  ![Resultado de la Consulta 11](resultados/resultado_query11_alumnos_sin_direccion_sin_email.jpg)
+
+### Resultado de la Consulta 12
+- **Cantidad de alumnos por curso**:
+  ![Resultado de la Consulta 12](resultados/resultado_query12_cantidad_alumnos_por_curso.jpg)
+
 ## Habilidades Aplicadas
 
 - **SQL Server**: Creación, gestión, y consulta de bases de datos relacionales usando SQL Server, una de las plataformas más utilizadas en la industria.
@@ -56,3 +84,4 @@ Este proyecto demuestra habilidades en:
 ## Contacto
 
 Si deseas más información o tienes alguna duda, no dudes en contactarme a través de [mi perfil de GitHub](https://github.com/tu_usuario).
+
