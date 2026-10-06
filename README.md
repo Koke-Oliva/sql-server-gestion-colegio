@@ -1,87 +1,232 @@
-# Manejo de Queries para la Extracción y Análisis de Datos con SQL Server - PUC Chile
+# Gestión de Datos Escolares con SQL Server
 
-Este proyecto fue parte del curso "Manejo de Queries para la Extracción y Análisis de Datos con SQL" realizado en la Pontificia Universidad Católica de Chile. En la Prueba 2 del curso, trabajé en la creación, relación y consulta de una base de datos que representaba un sistema de gestión de un colegio. El objetivo principal fue desarrollar habilidades para construir y gestionar bases de datos relacionales en **SQL Server** y realizar consultas SQL eficientes para la extracción y análisis de datos.
+Proyecto académico de **SQL Server y T-SQL** presentado como portafolio técnico. Corresponde a la **Prueba 2** del curso **“Manejo de Queries para la Extracción y Análisis de Datos con SQL”** de Educación Continua UC.
 
-## Componentes del Proyecto
+La presentación actual conserva la lógica y los **datos ficticios originales de la evaluación**, pero reorganiza el repositorio para que un reclutador técnico pueda distinguir con claridad el trabajo realizado, el material proporcionado por el curso y las mejoras posteriores de portafolio.
 
-1. **Creación de la Base de Datos Colegio en SQL Server**:
-   - Se creó una base de datos relacional llamada **"Colegio"** utilizando **SQL Server**, que representaba la estructura de datos necesaria para la administración de un colegio, incluyendo tablas para **estudiantes, profesores, cursos, y asignaciones**.
+## Resumen técnico
 
-2. **Modelado de Tablas y Relaciones**:
-   - Se crearon las tablas de la base de datos a partir de la información proporcionada, respetando los nombres de las columnas y definiendo correctamente los tipos de datos y las relaciones.
-   - Se establecieron **relaciones entre las tablas** siguiendo un **diagrama entidad-relación** (ERD) proporcionado en la prueba.
+| Aspecto | Detalle |
+|---|---|
+| Motor | Microsoft SQL Server |
+| Lenguaje | T-SQL |
+| Esquema | 6 tablas, 6 claves foráneas |
+| Dataset | Datos ficticios proporcionados por el curso |
+| Volumen | 37 comunas, 7 asignaturas, 8 cursos, 11 profesores, 60 alumnos y 200 registros de clase |
+| Evaluación original | Prueba 2 — Creación de Tablas y Consultas |
+| Nivel que demuestra | Fundamentos de DDL, integridad referencial, filtros, valores nulos, ordenamiento y agregación |
 
-3. **Población de Datos**:
-   - Los datos fueron poblados usando un script proporcionado, garantizando que la base de datos estuviera completamente cargada y lista para ser consultada.
+## Qué hice realmente en la evaluación
 
-4. **Consultas SQL Realizadas**:
-   - Se desarrollaron varias consultas SQL complejas en SQL Server para responder preguntas específicas y realizar análisis sobre los datos. Las consultas fueron diseñadas para:
-     - Obtener información detallada de **estudiantes matriculados**, **asignaciones de cursos**, y **rendimiento**.
-     - Realizar análisis cruzados entre las diferentes tablas del sistema.
+La pauta original permite separar con precisión el material entregado por el curso del trabajo que debía desarrollar el estudiante.
 
-   ### Consultas Incluidas
-   - **Consultas Simples**:
-     - **Querys 1 - 6**: `SELECT *` a cada tabla para verificar si tienen datos.
-   - **Consultas Avanzadas**:
-     - **Query 7**: Seleccionar profesores cuyo nombre termine con la letra **"a"**.
-     - **Query 8**: Seleccionar **alumnos sin email** registrado.
-     - **Query 9**: Seleccionar **profesores sin dirección o sin email**.
-     - **Query 10**: Seleccionar profesores que **no sean de Santiago** (ID de Comuna 36), incluyendo los que no tienen comuna, mostrando **RUN, nombre, apellido, email y teléfono**, ordenados por nombre de manera ascendente.
-     - **Query 11**: Seleccionar el **nombre, apellido, ID de asignatura** (Alias: Asignatura), **dirección e ID de comuna** (Alias: Comuna) de los profesores.
-     - **Query 12**: Mostrar la **cantidad de alumnos por curso**, mostrando únicamente el **ID del curso** y su cantidad de alumnos.
+| Parte | Origen | Trabajo realizado |
+|---|---|---|
+| Crear la base de datos Colegio | Requerimiento de la prueba | Creación de la base de datos |
+| Crear las tablas | Estructura indicada en un Excel adjunto | Implementación de tablas, columnas y tipos en SQL Server |
+| Crear las relaciones | Diagrama entregado por el curso | Implementación de claves foráneas según el modelo proporcionado |
+| Poblar las tablas | `Datos_Tablas.sql` entregado por el curso | Ejecución e integración de los datos ficticios proporcionados |
+| Resolver consultas | Requerimientos entregados en `Consultas.txt` | Desarrollo de las consultas SQL de la evaluación |
 
-## Archivos Incluidos
+La ponderación de la prueba era **20% creación de tablas, 5% relaciones, 5% poblado y 70% consultas**, por lo que el núcleo evaluado fue la resolución de consultas.
 
-- **Jorge Auad.sql**: Archivo que contiene todas las consultas y los scripts necesarios para la creación de la base de datos, la inserción de datos, y la ejecución de consultas solicitadas en la prueba.
-- **Pauta del Ejercicio (PDF)**: Documento con las instrucciones de la prueba que orientaron la construcción del proyecto.
+Más detalle: [docs/assignment_scope.md](docs/assignment_scope.md).
 
-## Resultados
+## Modelo relacional implementado
 
-A continuación se muestran algunos de los resultados obtenidos al ejecutar las consultas en SQL Server:
+~~~mermaid
+erDiagram
+    ASIGNATURA o|--o{ PROFESOR : "asignada a"
+    COMUNA o|--o{ PROFESOR : "residencia"
+    COMUNA o|--o{ ALUMNO : "residencia"
+    CURSO o|--o{ ALUMNO : "matricula"
+    PROFESOR ||--o{ CLASE : "participa"
+    ALUMNO ||--o{ CLASE : "participa"
 
-### Resultado de la Consulta 7
-- **Profesores cuyo nombre termina con la letra "a"**:
-  ![Resultado de la Consulta 7](resultados/resultado_query7_profesores_termina_con_a.jpg)
+    PROFESOR {
+        int ID PK
+        nvarchar RUN
+        nvarchar Nombre
+        nvarchar Apellido
+        date Fecha_Nac
+        int ID_Asignatura FK
+        nvarchar Direccion
+        int ID_Comuna FK
+        nvarchar email
+        nvarchar Telefono
+    }
 
-### Resultado de la Consulta 8
-- **Alumnos sin email registrado**:
-  ![Resultado de la Consulta 8](resultados/resultado_query8_alumnos_sin_email.jpg)
+    ALUMNO {
+        int ID PK
+        nvarchar RUN
+        nvarchar Nombre
+        nvarchar Apellido
+        date Fecha_Nac
+        nvarchar Direccion
+        int ID_Comuna FK
+        int ID_Curso FK
+        nvarchar email
+        nvarchar Telefono
+    }
 
-### Resultado de la Consulta 9
-- **Profesores sin dirección o sin email**:
-  ![Resultado de la Consulta 9](resultados/resultado_query9_Profesores_sin_dirección_o_sin_email.jpg)
+    ASIGNATURA {
+        int ID PK
+        nvarchar Nombre
+    }
 
-### Resultado de la Consulta 10
-- **Profesores que no son de Santiago (ID Comuna 36)**:
-  ![Resultado de la Consulta 10](resultados/resultado_query10_profesores_fuera_de_santiago.jpg)
+    COMUNA {
+        int ID PK
+        nvarchar Nombre
+    }
 
-### Resultado de la Consulta 11
-- **Alumnos sin dirección ni email**:
-  ![Resultado de la Consulta 11](resultados/resultado_query11_resultado_query8_alumnos_sin_email.jpg)
+    CURSO {
+        int ID PK
+        nvarchar Nombre
+    }
 
-### Resultado de la Consulta 12
-- **Cantidad de alumnos por curso**:
-  ![Resultado de la Consulta 12](resultados/resultado_query12_cantidad_alumnos_por_curso.jpg)
+    CLASE {
+        int ID PK
+        int ID_Profesor FK
+        int ID_Alumno FK
+    }
+~~~
 
-## Habilidades Aplicadas
+El diseño relacional fue proporcionado como referencia en la evaluación; el trabajo consistió en implementarlo correctamente mediante tablas, claves primarias y claves foráneas.
 
-- **SQL Server**: Creación, gestión, y consulta de bases de datos relacionales usando SQL Server, una de las plataformas más utilizadas en la industria.
-- **Modelado de Datos Relacional**: Creación de tablas y establecimiento de relaciones, siguiendo las mejores prácticas para bases de datos.
-- **SQL (Structured Query Language)**: Creación de consultas avanzadas para la extracción y análisis de datos.
-- **Data Analysis (Análisis de Datos)**: Uso de SQL para analizar información relevante sobre estudiantes, profesores, y cursos.
+## Consultas de la evaluación
 
-## Enlace al Proyecto Interactivo
+Las consultas 1 a 6 verifican el contenido de las seis tablas. Las consultas 7 a 12 aplican:
 
-Puedes acceder al proyecto en mi perfil de GitHub aquí: [Repositorio del Proyecto](https://github.com/Koke-Oliva/sql-server-gestion-colegio)
+| Query | Requerimiento | Conceptos |
+|---|---|---|
+| 7 | Profesores cuyo nombre termina en “a” | `LIKE` |
+| 8 | Alumnos sin email | `IS NULL` |
+| 9 | Profesores sin dirección o sin email | `IS NULL`, `OR` |
+| 10 | Profesores fuera de Santiago, incluyendo comuna no informada | comparación, `IS NULL`, `OR`, `ORDER BY` |
+| 11 | Selección de atributos y alias de columnas | proyección, alias |
+| 12 | Cantidad de alumnos por curso | `COUNT`, `GROUP BY` |
 
-## Sobre el Proyecto
+Código de portafolio: [sql/03_queries.sql](sql/03_queries.sql).
 
-Este proyecto demuestra habilidades en:
-- **Gestión y modelado de bases de datos relacionales** con **SQL Server**.
-- **Extracción de datos** utilizando consultas complejas para análisis específicos.
-- **Creación de medidas y consultas** avanzadas para obtener insights a partir de los datos de gestión del colegio.
+Entrega académica original: [original/Jorge_Auad_Prueba2.sql](original/Jorge_Auad_Prueba2.sql).
 
-## Contacto
+## Datos de la evaluación
 
-Si deseas más información o tienes alguna duda, no dudes en contactarme a través de [mi perfil de GitHub](https://github.com/Koke-Oliva).
+Los registros de profesores y alumnos utilizados en la prueba son **ficticios** y fueron proporcionados por el curso mediante el archivo de carga de datos.
 
+La versión de portafolio conserva esos valores para que:
+
+- los resultados sigan siendo comparables con la evaluación original;
+- las capturas de SSMS continúen correspondiendo al código;
+- el proyecto mantenga trazabilidad entre pauta, datos, consultas y resultados.
+
+La carga modular está en [sql/02_seed_course_data.sql](sql/02_seed_course_data.sql).
+
+## Evidencia de ejecución
+
+<table>
+  <tr>
+    <td width="50%"><strong>Query 10 — Profesores fuera de Santiago</strong></td>
+    <td width="50%"><strong>Query 12 — Cantidad de alumnos por curso</strong></td>
+  </tr>
+  <tr>
+    <td><img src="resultados/resultado_query10_profesores_fuera_de_santiago.jpg" alt="Resultado Query 10"></td>
+    <td><img src="resultados/resultado_query12_cantidad_alumnos_por_curso.jpg" alt="Resultado Query 12"></td>
+  </tr>
+</table>
+
+Galería completa: [resultados/README.md](resultados/README.md).
+
+## Estructura
+
+~~~text
+.
+├── README.md
+├── .gitignore
+├── sql/
+│   ├── 01_schema.sql
+│   ├── 02_seed_course_data.sql
+│   ├── 03_queries.sql
+│   └── 04_data_quality_checks.sql
+├── original/
+│   └── Jorge_Auad_Prueba2.sql
+├── resultados/
+│   ├── README.md
+│   └── capturas de ejecución en SSMS
+└── docs/
+    ├── assignment_scope.md
+    ├── data_dictionary.md
+    ├── query_results.md
+    └── technical_review.md
+~~~
+
+## Cómo ejecutar
+
+### Requisitos
+
+- Microsoft SQL Server.
+- SQL Server Management Studio (SSMS), Azure Data Studio o cliente compatible con T-SQL.
+
+### Versión modular de portafolio
+
+1. Ejecutar [sql/01_schema.sql](sql/01_schema.sql).
+2. Ejecutar [sql/02_seed_course_data.sql](sql/02_seed_course_data.sql).
+3. Ejecutar [sql/03_queries.sql](sql/03_queries.sql).
+4. Opcionalmente, ejecutar [sql/04_data_quality_checks.sql](sql/04_data_quality_checks.sql).
+
+La versión modular utiliza la base **ColegioPortfolio** para que pueda coexistir con la entrega académica original.
+
+### Entrega original
+
+El archivo [original/Jorge_Auad_Prueba2.sql](original/Jorge_Auad_Prueba2.sql) se conserva sin alterar como evidencia de lo que fue entregado en el curso.
+
+## Resultado destacado
+
+La Query 12 produce la distribución original:
+
+| ID_Curso | Cantidad_de_alumnos |
+|---:|---:|
+| 1 | 11 |
+| 2 | 10 |
+| 3 | 10 |
+| 4 | 4 |
+| 5 | 5 |
+| 6 | 6 |
+| 7 | 5 |
+| 8 | 9 |
+
+Más resultados: [docs/query_results.md](docs/query_results.md).
+
+## Extensión de calidad de datos
+
+[sql/04_data_quality_checks.sql](sql/04_data_quality_checks.sql) es una mejora posterior al curso y está separada explícitamente de la evaluación original.
+
+Entre otras cosas, permite detectar que el dataset ficticio de alumnos contiene **RUN repetidos**. Esto no modifica los datos entregados por el curso: documenta una observación de calidad sobre ellos.
+
+## Revisión técnica
+
+La profesionalización incorpora:
+
+- separación entre esquema, datos y consultas;
+- objetos calificados con `dbo`;
+- listas explícitas de columnas en los `INSERT`;
+- conservación de la entrega académica original;
+- evidencia visual de ejecución;
+- diccionario de datos y resultados esperados;
+- controles de calidad claramente identificados como extensión posterior;
+- documentación explícita de autoría y alcance.
+
+Para un sistema productivo todavía habría que evaluar índices, restricciones de unicidad, reglas de negocio, transacciones, manejo de errores, seguridad y permisos.
+
+Detalle: [docs/technical_review.md](docs/technical_review.md).
+
+## Alcance técnico
+
+Este proyecto demuestra **fundamentos de SQL Server**. No se presenta como evidencia de SQL avanzado, tuning, administración de servidores, procedimientos almacenados, CTE o funciones de ventana.
+
+Esa delimitación es intencional: busca que lo mostrado sea completamente defendible en una entrevista técnica.
+
+---
+
+**Autor:** Jorge Auad Oliva  
+**Contexto académico:** Educación Continua, Pontificia Universidad Católica de Chile
