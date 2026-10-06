@@ -224,8 +224,6 @@ Detalle: [docs/technical_review.md](docs/technical_review.md).
 
 Este proyecto demuestra **fundamentos de SQL Server**. No se presenta como evidencia de SQL avanzado, tuning, administración de servidores, procedimientos almacenados, CTE o funciones de ventana.
 
-Esa delimitación es intencional: busca que lo mostrado sea completamente defendible en una entrevista técnica.
-
 ---
 
 **Autor:** Jorge Auad Oliva  
