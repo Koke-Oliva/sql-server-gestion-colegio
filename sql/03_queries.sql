@@ -3,7 +3,7 @@
     Archivo: 03_queries.sql
 
     Consultas correspondientes a la evaluación original.
-    La versión pública se ejecuta sobre el dataset sintético del repositorio.
+    La versión de portafolio se ejecuta sobre los datos ficticios originales proporcionados por el curso.
 */
 
 USE ColegioPortfolio;
